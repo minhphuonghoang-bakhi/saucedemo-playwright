@@ -1,0 +1,14 @@
+# Build
+target/
+
+# IntelliJ
+.idea/
+*.iml
+
+# Testartefakte
+traces/
+screenshots/
+
+# OS
+.DS_Store
+Thumbs.db
