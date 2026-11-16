@@ -1,0 +1,4 @@
+testCase,username,password,expectedError
+TC-L04a: Username fehlt,"",secret_sauce,Epic sadface: Username is required
+TC-L04b: Password fehlt,standard_user,"",Epic sadface: Password is required
+TC-L04c: Beide Felder leer,"","",Epic sadface: Username is required

@@ -1,0 +1,5 @@
+testCase,firstName,lastName,postalCode,expectedError
+TC-C02a: Vorname fehlt,"",Mustermann,86150,Error: First Name is required
+TC-C02b: Nachname fehlt,Max,"",86150,Error: Last Name is required
+TC-C02c: PLZ fehlt,Max,Mustermann,"",Error: Postal Code is required
+TC-C02d: Alle Felder leer,"","","",Error: First Name is required
