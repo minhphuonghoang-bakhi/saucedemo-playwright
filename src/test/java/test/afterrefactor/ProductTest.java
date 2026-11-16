@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
+import static data.TestData.*;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -17,7 +18,7 @@ class ProductTest extends BaseTest {
 
     @BeforeEach
     void loginAsStandardUser() {
-        inventory = new LoginPage(page).loginAs("standard_user", "secret_sauce");
+        inventory = new LoginPage(page).loginAs(STANDARD_USER, PASSWORD);
     }
 
     @Test
@@ -32,11 +33,11 @@ class ProductTest extends BaseTest {
         // TODO 1: Sortierung wählen
         inventory.sortBy("lohi");
         // TODO 2: Erstes Produkt prüfen
-        assertThat(inventory.itemNames().first()).hasText("Sauce Labs Onesie");
+        assertThat(inventory.itemNames().first()).hasText(ONESIE);
         assertThat(inventory.itemPrices().first()).hasText("$7.99");
 
         // TODO 3: Letztes Produkt prüfen
-        assertThat(inventory.itemNames().last()).hasText("Sauce Labs Fleece Jacket");
+        assertThat(inventory.itemNames().last()).hasText(FLEECE_JACKET);
         assertThat(inventory.itemPrices().last()).hasText("$49.99");
     }
 
@@ -46,9 +47,9 @@ class ProductTest extends BaseTest {
         // TODO
         inventory.sortBy("za");
 
-        assertThat(inventory.itemNames().first()).hasText("Test.allTheThings() T-Shirt (Red)");
+        assertThat(inventory.itemNames().first()).hasText(RED_TSHIRT);
 
-        assertThat(inventory.itemNames().last()).hasText("Sauce Labs Backpack");
+        assertThat(inventory.itemNames().last()).hasText(BACKPACK);
     }
 }
 

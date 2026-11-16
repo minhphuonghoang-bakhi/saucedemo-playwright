@@ -9,6 +9,8 @@ import pages.InventoryPage;
 import pages.LoginPage;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static data.TestData.*;
+
 class CartTest extends BaseTest {
 
     private static final String BACKPACK = "Sauce Labs Backpack";
@@ -18,7 +20,7 @@ class CartTest extends BaseTest {
 
     @BeforeEach
     void loginAsStandardUser() {
-        inventory = new LoginPage(page).loginAs("standard_user", "secret_sauce"); // Products page
+        inventory = new LoginPage(page).loginAs(STANDARD_USER, PASSWORD); // Products page
     }
 
     @Test
@@ -28,7 +30,10 @@ class CartTest extends BaseTest {
         inventory.addToCart(BACKPACK);
         CartPage cart = inventory.openCart();
         // Assert: Badge = "1", Button heißt jetzt "Remove"
-        assertThat(cart.cartBadge()).hasText("1");
+        assertThat(inventory.cartBadge()).hasText("1");
+        assertThat(inventory.product(BACKPACK).getByRole(
+                com.microsoft.playwright.options.AriaRole.BUTTON,
+                new com.microsoft.playwright.Locator.GetByRoleOptions().setName("Remove"))).isVisible();
     }
 
     @Test

@@ -4,21 +4,21 @@ import base.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import pages.*;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+import static data.TestData.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheckoutTest extends BaseTest {
-
-    private static final String BACKPACK = "Sauce Labs Backpack";
-    private static final String BIKE_LIGHT = "Sauce Labs Bike Light";
 
     private InventoryPage inventory;
 
     @BeforeEach
     void loginAsStandardUser() {
-        inventory = new LoginPage(page).loginAs("standard_user", "secret_sauce");
+        inventory = new LoginPage(page).loginAs(STANDARD_USER, PASSWORD);
     }
 
     @Test
@@ -38,16 +38,19 @@ class CheckoutTest extends BaseTest {
         assertThat(complete.completeHeader()).hasText("Thank you for your order!");
     }
 
-    @Test
-    @DisplayName("TC-C02: Fehlender Vorname")
-    void missingFirstNameShowsError() {
+    @ParameterizedTest(name = "{0}")
+    @CsvFileSource(resources = "/testdata/checkout-validation.csv", numLinesToSkip = 1)
+    void missingCustomerDataShowsError(String testCase, String firstName, String lastName,
+                                       String postalCode, String expectedError) {
+        // Arrange
         inventory.addToCart(BACKPACK);
-
-        // dont use continueWith (return CheckoutCompletePage means successfully going to this page)
         CheckoutInfoPage info = inventory.openCart().checkout();
-        info.fillAndContinue("","Mustermann","86150");
 
-        assertThat(info.errorMessage()).hasText("Error: First Name is required");
+        // Act
+        info.fillAndContinue(firstName, lastName, postalCode);
+
+        // Assert
+        assertThat(info.errorMessage()).hasText(expectedError);
     }
 
     @Test
@@ -60,7 +63,7 @@ class CheckoutTest extends BaseTest {
         // Act
         CheckoutOverviewPage overview = inventory.openCart()
                 .checkout()
-                .continueWith("Max", "Mustermann", "86150");
+                .continueWith(MAX);
 
         // Assert 1: konkrete Werte
         assertThat(overview.itemTotalLabel()).hasText("Item total: $39.98");
