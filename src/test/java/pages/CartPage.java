@@ -31,4 +31,9 @@ public class CartPage extends BasePage {
                 .getByRole(AriaRole.BUTTON, new Locator.GetByRoleOptions().setName("Remove"))
                 .click();
     }
+    public CheckoutInfoPage checkout() {
+        // TODO: Button "Checkout" klicken (data-test="checkout")
+        page.getByTestId("checkout").click();
+        return new CheckoutInfoPage(page);
+    }
 }
