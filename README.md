@@ -42,16 +42,14 @@ In IntelliJ: grünen ▶-Button neben einer Testklasse oder Testmethode klicken.
 ## Projektstruktur
 
 ```
-saucedemo-playwright/
-├── docs/
-│   ├── testkonzept.md      Ziel, Scope, Strategie, Konventionen
-│   └── testfaelle.md       Testfallkatalog mit allen Testfällen
-├── src/test/java/
-│   ├── base/
-│   │   └── BaseTest.java   Browser-Setup, ein frischer Context pro Test
-│   └── tests/
-│       └── SmokeTest.java  TC-S01
-└── pom.xml
+src/test/
+├── java/
+│   ├── base/        BaseTest – Browser-Setup, frischer Context pro Test
+│   ├── data/        TestData, Customer – zentrale Testdaten
+│   ├── pages/       Page Objects (Login, Inventory, Cart, Checkout …)
+│   └── tests/       Testklassen je Modul
+└── resources/
+    └── testdata/    CSV-Dateien für datengetriebene Tests
 ```
 
 ## Dokumentation

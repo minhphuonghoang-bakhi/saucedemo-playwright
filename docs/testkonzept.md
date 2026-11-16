@@ -1,11 +1,11 @@
 # Testkonzept – Swag Labs (saucedemo.com)
 
-| | |
-|---|---|
+| |                                  |
+|---|----------------------------------|
 | **Projekt** | UI-Testautomatisierung Swag Labs |
-| **Autor** | Duy Khanh Vu |
-| **Version** | 1.0 |
-| **Stand** | 13.11.2026 |
+| **Autor** | Minh Phuong Hoang                |
+| **Version** | 1.0                              |
+| **Stand** | 16.11.2026                       |
 
 ## 1. Ziel
 
@@ -81,6 +81,11 @@ Passwort für alle Benutzer: `secret_sauce`.
 | `problem_user` | Enthält bekannte Fehler | Fehlerbericht (Aufgabe 8) |
 
 Kundendaten im Checkout: Vorname `Max`, Nachname `Mustermann`, PLZ `86150`.
+
+**Ablage der Testdaten**
+- Feste Testdaten (Benutzer, Produkte, Kunden): `src/test/java/data/TestData.java`
+- Datengetriebene Tests: CSV-Dateien unter `src/test/resources/testdata/`
+  (z. B. `checkout-validation.csv`). Neue Fälle können ohne Codeänderung ergänzt werden.
 
 ## 7. Eingangs- und Endekriterien
 

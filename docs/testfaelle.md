@@ -22,8 +22,10 @@ Passwort, falls nicht anders angegeben: `secret_sauce`.
 | TC-W02 | Warenkorb | Zwei Produkte im Warenkorb | Hoch | ⬜ |
 | TC-W03 | Warenkorb | Produkt entfernen | Mittel | ⬜ |
 | TC-C01 | Checkout | Kompletter Kaufprozess (E2E) | Hoch | ⬜ |
-| TC-C02 | Checkout | Fehlender Vorname | Mittel | ⬜ |
-| TC-C03 | Checkout | Preisberechnung | Mittel | ⬜ |
+| TC-C02a | Checkout | Vorname fehlt → „Error: First Name is required" | Mittel | ✅ |
+| TC-C02b | Checkout | Nachname fehlt → „Error: Last Name is required" | Mittel | ✅ |
+| TC-C02c | Checkout | PLZ fehlt → „Error: Postal Code is required" | Mittel | ✅ |
+| TC-C02d | Checkout | Alle Felder leer → „Error: First Name is required" | Niedrig | ✅ || TC-C03 | Checkout | Preisberechnung | Mittel | ⬜ |
 | TC-O01 | Logout | Logout über das Menü | Mittel | ⬜ |
 
 ---
