@@ -39,6 +39,23 @@ mvn test -Dtest=SmokeTest
 
 In IntelliJ: grünen ▶-Button neben einer Testklasse oder Testmethode klicken.
 
+## Fehleranalyse
+
+Schlägt ein Test fehl, werden automatisch gespeichert:
+
+| Artefakt | Ort | Öffnen |
+|---|---|---|
+| Screenshot | `screenshots/<Testklasse>_<Test>.png` | Bildbetrachter |
+| Trace | `traces/<Testklasse>_<Test>.zip` | Datei in https://trace.playwright.dev ziehen |
+
+Bei erfolgreichen Tests wird nichts gespeichert.
+
+## Gefundene Fehler
+
+| ID | Titel | Schweregrad | Status |
+|---|---|---|---|
+| [BUG-001](docs/fehlerberichte/BUG-001.md) | Checkout – Nachname landet im Feld „First Name" (`problem_user`) | Kritisch | Offen |
+
 ## Projektstruktur
 
 ```
@@ -57,13 +74,3 @@ src/test/
 - [Testkonzept](docs/testkonzept.md)
 - [Testfallkatalog](docs/testfaelle.md)
 
-## Status
-
-| Modul | Testfälle | Automatisiert |
-|---|---|---|
-| Smoke | 1 | 0 |
-| Login | 5 | 0 |
-| Produkte | 3 | 0 |
-| Warenkorb | 3 | 0 |
-| Checkout | 3 | 0 |
-| Logout | 1 | 0 |

@@ -119,7 +119,8 @@ Kundendaten im Checkout: Vorname `Max`, Nachname `Mustermann`, PLZ `86150`.
 | Änderungen an der Oberfläche | Stabile Locator (Rolle, data-test), Page Object Model |
 | Flaky Tests durch Timing | Web-first Assertions (`assertThat`) statt einmaliger Prüfung |
 
-## 10. Dokumente
+- ## 10. Dokumente
 
 - [Testfallkatalog](testfaelle.md)
-- Fehlerberichte: `docs/fehlerberichte/` (ab Aufgabe 8)
+- Fehlerberichte:
+    - [BUG-001: Checkout – Nachname landet im Feld „First Name"](fehlerberichte/BUG-001.md)
